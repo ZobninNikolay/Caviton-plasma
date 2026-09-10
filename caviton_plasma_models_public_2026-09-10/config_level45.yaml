@@ -1,0 +1,42 @@
+input:
+  extrema_summary_csv: outputs/extrema_summary.csv
+  selected_regime: practical_extended_window
+
+transfer:
+  density_depletion_fraction: 0.05
+  requested_field_fraction_of_transition: 0.80
+  minimum_electron_density_fraction: 0.05
+  carrier_phases_rad: [0.0, 1.5707963267948966, 3.141592653589793, 4.71238898038469]
+
+pic:
+  grid_cells: 1024
+  particles_per_cell_per_charge_population: 6
+  normalized_time_step: 0.08
+  normalized_end_time: 800.0
+  record_every_steps: 100
+  electron_temperature_ratio: 1.0
+  ion_temperature_eV: 0.10
+  random_seed: 20260809
+  collisions_enabled: true
+  ion_species:
+    - {name: Dplus, fraction: 0.10, mass_u: 2.014, deuterons_per_ion: 1}
+    - {name: D2plus, fraction: 0.10, mass_u: 4.028, deuterons_per_ion: 2}
+    - {name: D3plus, fraction: 0.80, mass_u: 6.042, deuterons_per_ion: 3}
+  tail_thresholds_eV: [100.0, 1000.0, 10000.0, 100000.0]
+
+controls:
+  deep_cavity_fraction: 0.20
+  imposed_double_layer_potential_Te: 10.0
+  imposed_double_layer_width_Debye: 20.0
+  converging_flow_mach: 2.0
+
+quality_scan:
+  Q_multipliers: [0.25, 0.5, 1.0, 2.0, 4.0]
+  coherent_mode_fractions: [0.01, 0.03, 0.10, 0.30]
+  onset_depletions: [0.01, 0.02, 0.05, 0.10, 0.20, 0.40]
+
+geometries:
+  - {name: cylinder, mode_overlap_multiplier: 1.00, recirculation_multiplier: 1.00}
+  - {name: equal_volume_sphere, mode_overlap_multiplier: 1.12, recirculation_multiplier: 1.10}
+  - {name: equal_volume_torus_AR2, aspect_ratio: 2.0, mode_overlap_multiplier: 1.25, recirculation_multiplier: 1.35}
+  - {name: converging_diverging_nozzle, throat_area_ratio: 0.30, mode_overlap_multiplier: 0.95, recirculation_multiplier: 0.80}

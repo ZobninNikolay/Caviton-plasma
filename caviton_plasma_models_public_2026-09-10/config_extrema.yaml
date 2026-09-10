@@ -1,0 +1,76 @@
+input:
+  level4_history_csv: outputs/level4_history_nominal_1p5.csv
+  level4_scenarios_csv: outputs/level4_scenarios.csv
+
+plasma:
+  neutral_temperature_K: 300.0
+  background_ion_mass_u: 2.014
+  neutral_mass_u: 4.028
+  effective_molecular_ion_mass_u: 4.834
+  molecular_ion_neutral_rate_scale: 0.691
+  ion_temperature_eV: 0.10
+
+wave:
+  caviton_carrier_wavelengths: 3.0
+  modulation_to_carrier_k_maximum: 0.35
+  operating_field_over_threshold: 1.50
+  nonlinear_onset_peak_gain: 6.0
+  density_seed_fraction: 1.0e-3
+  onset_depletion_fraction: 0.05
+  minimum_langmuir_Q: 20.0
+  minimum_acoustic_Q: 5.0
+  langmuir_damping_lengths_per_interaction: 2.0
+  acoustic_damping_lengths_per_caviton: 2.0
+  minimum_plasma_parameter: 1000.0
+  maximum_ionization_fraction: 0.05
+
+pump_collapse_ode:
+  pulse_duration_s: 2.0e-5
+  collapse_follow_time_s: 2.0e-6
+  coherent_mode_fraction: 0.030
+  kinetic_cutoff_Debye_lengths: 20.0
+  envelope_validity_K_over_k_maximum: 0.35
+  calibrated_collapse_rate_scale: 0.68
+  initial_shape_factor: 3.358
+  shape_factor_power: 1.066
+  density_floor_fraction: 0.05
+  sheath_drop_Te_multiplier: 3.0
+
+engineering:
+  generator_power_bounds_W: [100.0, 800.0]
+  absorbed_fraction_bounds: [0.03, 0.30]
+  electron_temperature_bounds_eV: [3.0, 12.0]
+  electron_density_bounds_m3: [3.0e15, 1.2e17]
+
+searches:
+  - name: current_validated_window
+    pressure_Pa: [0.050, 0.070]
+    absorbed_power_W: [9.0, 16.0]
+    radius_m: [0.050, 0.050]
+    chamber_length_m: [0.250, 0.250]
+    wall_transmission_factor: [0.050, 0.050]
+    k_lambda_De: [0.160, 0.225]
+    interaction_length_m: [0.050, 0.050]
+  - name: practical_extended_window
+    pressure_Pa: [0.005, 0.050]
+    absorbed_power_W: [3.0, 80.0]
+    radius_m: [0.050, 0.150]
+    chamber_length_m: [0.200, 0.500]
+    wall_transmission_factor: [0.002, 0.050]
+    k_lambda_De: [0.010, 0.160]
+    interaction_length_m: [0.050, 0.200]
+  - name: physics_upper_window
+    pressure_Pa: [0.002, 0.050]
+    absorbed_power_W: [3.0, 200.0]
+    radius_m: [0.050, 0.250]
+    chamber_length_m: [0.200, 1.000]
+    wall_transmission_factor: [0.001, 0.050]
+    k_lambda_De: [0.005, 0.160]
+    interaction_length_m: [0.050, 0.400]
+
+optimizer:
+  seed: 20260809
+  maximum_iterations: 45
+  population_size: 10
+  tolerance: 1.0e-6
+  polish: true

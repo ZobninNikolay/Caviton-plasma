@@ -1,0 +1,72 @@
+input:
+  extrema_summary_csv: outputs/extrema_summary.csv
+  selected_regime: practical_extended_window
+
+experiment:
+  pulse_duration_s: 2.0e-5
+  local_observation_duration_s: 1.5e-5
+  absorbed_power_W: 59.291345
+  drive_frequencies_Hz: [5.0e5, 1.0e6, 2.0e6, 5.0e6, 1.0e7]
+  coherent_power_fractions: [0.01, 0.03, 0.10, 0.30]
+  target_energy_eV: 1000.0
+  chamber_length_m: 0.311831
+  radius_m: 0.0955484
+
+plasma:
+  electron_temperature_cold_eV: 8.072408
+  electron_temperature_hot_eV: 300.0
+  hot_electron_fraction: 0.01236
+  ion_temperature_eV: 0.10
+  density_scan_m3: [8.0e14, 3.0e15, 1.0e16, 3.996743e16]
+  species:
+    - {name: Dplus, fraction: 0.90, mass_u: 2.014, deuterons_per_ion: 1}
+    - {name: D2plus, fraction: 0.05, mass_u: 4.028, deuterons_per_ion: 2}
+    - {name: D3plus, fraction: 0.05, mass_u: 6.042, deuterons_per_ion: 3}
+
+magnetic_profile:
+  fractional_gradient: 0.25
+  off_resonance_multiplier: 2.0
+
+damping:
+  electron_neutral_s-1: 3.943126e5
+  ion_neutral_effective_s-1: 2.846661e4
+  lower_hybrid_scale: 1.0
+  charge_exchange_fraction: 0.70
+
+orbit_mcc:
+  base_particles: 32768
+  refined_particles: 131072
+  time_step_s: 5.0e-9
+  record_every_steps: 100
+  random_seed: 20260812
+  minimum_tail_counts: 30
+  wavebreaking_fraction_cap: 0.80
+  cases:
+    - {name: current_density_drive_off, density_m3: 3.996743e16, frequency_Hz: 1.0e6, coherent_fraction: 0.0, preenergy_eV: 0.0}
+    - {name: current_density_thermal_3pct, density_m3: 3.996743e16, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 0.0}
+    - {name: current_density_pre200_3pct, density_m3: 3.996743e16, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0}
+    - {name: low_density_pre200_3pct, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0}
+    - {name: low_density_pre200_10pct, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.10, preenergy_eV: 200.0}
+    - {name: low_density_pre200_10pct_refined, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.10, preenergy_eV: 200.0, refined: true}
+    - {name: low_density_pre200_30pct, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.30, preenergy_eV: 200.0}
+    - {name: low_density_pre200_off_resonance, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, off_resonance: true}
+    - {name: low_density_pre200_B0_refined, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, magnetic_multiplier: 0.0, refined: true}
+    - {name: low_density_pre200_2B_refined, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, magnetic_multiplier: 2.0, refined: true}
+    - {name: low_density_pre200_no_MCC, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, collisions_enabled: false}
+    - {name: low_density_power_iter_0p02, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.02, particles: 16384}
+    - {name: low_density_power_iter_0p05, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.05, particles: 16384}
+    - {name: low_density_power_iter_0p10, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.10, particles: 16384}
+    - {name: low_density_power_iter_0p20, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.20, particles: 16384}
+    - {name: low_density_power_iter_0p40, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.40, particles: 16384}
+    - {name: low_density_power_iter_0p60, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.60, particles: 16384}
+    - {name: low_density_power_iter_0p80, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.80, particles: 16384}
+    - {name: low_density_power_iter_0p50_refined, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.50, refined: true}
+    - {name: low_density_power_iter_0p60_refined, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, field_scale: 0.60, refined: true}
+    - {name: low_density_pre200_3pct_refined, density_m3: 8.0e14, frequency_Hz: 1.0e6, coherent_fraction: 0.03, preenergy_eV: 200.0, refined: true}
+
+explicit_pic_audit:
+  cells_per_Debye_length: 2.0
+  required_tail_fraction: 1.0e-5
+  required_tail_counts: 30
+  particles_per_cell_floor: 64
+  maxwell_CFL: 0.95
