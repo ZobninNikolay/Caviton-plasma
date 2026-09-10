@@ -1,0 +1,55 @@
+input:
+  extrema_summary_csv: outputs/extrema_summary.csv
+  level45_summary_json: outputs/level45_summary.json
+  selected_regime: practical_extended_window
+
+experiment:
+  pulse_duration_s: 2.0e-5
+  generator_power_limit_W: 800.0
+  coherent_power_fractions: [0.03, 0.10, 0.30]
+  target_deuteron_energies_eV: [1000.0, 3000.0, 10000.0, 30000.0, 100000.0]
+  Dplus_fraction_reference: 0.10
+
+modulational_control:
+  modulation_to_carrier_k_minimum: 0.02
+  modulation_to_carrier_k_maximum: 0.35
+  points: 90
+  Q_multipliers: [0.25, 0.50, 1.0, 2.0, 4.0]
+  operating_field_factors: [1.05, 1.25, 1.50, 2.00]
+  density_seed_fraction: 1.0e-3
+  onset_depletion_fraction: 0.05
+
+open_double_layer:
+  cold_electron_temperature_eV: 8.072408
+  hot_fraction_bounds: [1.0e-4, 0.15]
+  hot_temperature_bounds_eV: [30.0, 3000.0]
+  throat_area_ratio_bounds: [1.0e-4, 0.30]
+  hot_zone_length_m: 0.020
+  ion_temperature_eV: 0.10
+  Dplus_fraction: 0.90
+  molecular_remainder_mass_u: 6.042
+  optimizer_seed: 20260810
+  optimizer_iterations: 160
+
+counterstream_shock:
+  electron_temperature_bounds_eV: [8.072408, 300.0]
+  Mach_bounds: [1.6, 15.0]
+  throat_area_ratio_bounds: [1.0e-4, 0.30]
+  Dplus_fraction_bounds: [0.10, 1.0]
+  interaction_length_m: 0.020
+  reflected_fraction_upper_bound: 0.20
+  optimizer_seed: 20260811
+  optimizer_iterations: 160
+
+lower_hybrid:
+  axial_harmonics: [1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20]
+  magnetic_field_bounds_T: [5.0e-4, 0.20]
+  active_length_m: 0.311831
+  damping_scale: 1.0
+  maximum_coherent_fraction: 0.30
+  preacceleration_energies_eV: [0.0, 2.5, 60.26035, 180.78105, 200.0]
+  minimum_bounce_periods: 1.0
+
+nozzle:
+  expansion_ratios: [2.0, 5.0, 10.0, 30.0, 100.0]
+  magnetic_field_T: 0.010

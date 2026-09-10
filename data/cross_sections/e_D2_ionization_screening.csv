@@ -1,0 +1,21 @@
+# Screening-grade total ionization cross section for e + D2 -> ions + 2e.
+# Shape follows the known D2 threshold and broad maximum; not a certified database export.
+energy_eV,sigma_m2
+0.01,0.0
+10.0,0.0
+15.42,0.0
+16.0,4.0e-22
+18.0,2.0e-21
+20.0,4.0e-21
+25.0,9.0e-21
+30.0,1.25e-20
+40.0,1.65e-20
+60.0,1.90e-20
+80.0,1.95e-20
+100.,1.85e-20
+150.,1.55e-20
+200.,1.30e-20
+300.,9.5e-21
+500.,6.0e-21
+1000,3.2e-21
+

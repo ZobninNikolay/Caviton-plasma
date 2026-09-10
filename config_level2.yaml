@@ -1,0 +1,48 @@
+input:
+  background_csv: outputs/refined_sensitivity_scenarios.csv
+  background_scenario: nominal_Dplus
+
+core_window:
+  pressure_Pa: [0.050, 0.055]
+  absorbed_power_W: [14.0, 15.0, 16.0]
+  ion_temperature_eV: [0.05, 0.10, 0.20, 0.30]
+  k_lambda_De: [0.200, 0.205, 0.210, 0.215]
+
+center_point:
+  pressure_Pa: 0.050
+  absorbed_power_W: 15.0
+  ion_temperature_eV: 0.10
+  k_lambda_De: 0.210
+  curve_k_lambda_De: [0.05, 0.35, 61]
+
+# All ions are singly charged. Fractions are fractions of total positive-ion density.
+composition_scenarios:
+  - name: pure_Dplus
+    ions:
+      - {name: D+, mass_u: 2.014, fraction: 1.0, neutral_collision_scale: 1.0}
+  - name: molecular_nominal
+    ions:
+      - {name: D+, mass_u: 2.014, fraction: 0.10, neutral_collision_scale: 1.0}
+      - {name: D2+, mass_u: 4.028, fraction: 0.10, neutral_collision_scale: 0.7071}
+      - {name: D3+, mass_u: 6.042, fraction: 0.80, neutral_collision_scale: 0.5774}
+  - name: D3plus_dominant
+    ions:
+      - {name: D+, mass_u: 2.014, fraction: 0.05, neutral_collision_scale: 1.0}
+      - {name: D2+, mass_u: 4.028, fraction: 0.05, neutral_collision_scale: 0.7071}
+      - {name: D3+, mass_u: 6.042, fraction: 0.90, neutral_collision_scale: 0.5774}
+
+collisions:
+  model: additive_conservative_drag
+  electron_momentum_scale: 1.0
+  electron_drag_weight: debeye_polarization
+  ion_neutral_reference: level1_Dplus_proxy
+
+solver:
+  root_relative_tolerance: 1.0e-10
+  dielectric_residual_tolerance: 1.0e-6
+  group_derivative_fraction: 1.0e-3
+  propagating_min_Q: 2.0
+
+acceptance:
+  langmuir_min_amplitude_length_m: 0.100
+  acoustic_min_amplitude_length_in_wavelengths: 6.0
